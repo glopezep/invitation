@@ -5,6 +5,7 @@ import {
   TextInput,
   View
 } from 'react-native';
+import EnsureAuth from '../../auth/containers/EnsureAuth'
 
 class HomeScreen extends Component {
   constructor (props) {
@@ -13,9 +14,11 @@ class HomeScreen extends Component {
 
   render () {
     return (
-      <View>
-        <Text>Home Screen</Text>
-      </View>
+      <EnsureAuth goBack={this.props.navigation.goBack}>
+        <View>
+          <Text>Home View</Text>
+        </View>
+      </EnsureAuth>
     )
   }
 }

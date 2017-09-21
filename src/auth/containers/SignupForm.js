@@ -24,7 +24,7 @@ class SignupForm extends Component {
 
   async saveUser () {
     try {
-      const { mutate, navigate } = this.props
+      const { mutate, goBack } = this.props
 
       const newUser = {
         fullname: this.state.fullname.toLowerCase(),
@@ -34,8 +34,9 @@ class SignupForm extends Component {
       }
 
       const res = await mutate({ variables: { user: newUser } })
+    
+      goBack()
 
-      navigate('Signin')
     } catch (e) {
       Alert.alert(e.message)
     }

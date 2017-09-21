@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Alert,
+  AsyncStorage,
   Button,
   StyleSheet,
   Text,
@@ -26,8 +27,9 @@ class SigninForm extends Component {
       const password = this.state.password.toLowerCase()
       const { mutate, navigate } = this.props
       const res = await mutate({ variables: { username, password } })
+      const { token } = res.data.authenticate
+      await AsyncStorage.setItem('token', token)
       navigate('Home')
-      // Alert.alert(res.data.authenticate.token)
     } catch (e) {
       Alert.alert(e.message)
     }

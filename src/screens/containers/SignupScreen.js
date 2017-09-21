@@ -20,9 +20,10 @@ class SignupScreen extends Component {
   }
 
   render () {
+    console.log(this.props)
     return (
       <View style={styles.container}>
-        <SignupForm navigate={this.props.navigation.navigate} />
+        <SignupForm goBack={this.props.navigation.goBack} />
       </View>
     )
   }
